@@ -1,8 +1,6 @@
 const min = function (arg1, arg2) {
     try {
-        // [arguments].forEach(arg => tryToParseToNumber(arg));
-        tryToParseToNumber(arg1);
-        tryToParseToNumber(arg2);
+        Array.from(arguments).forEach(arg => tryToParseToNumber(arg));
 
         return Number(arg1) < Number(arg2) ? printArgument(arg1) : printArgument(arg2);
     } catch (error) {
