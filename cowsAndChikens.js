@@ -16,7 +16,7 @@ function printInfo() {
             return;
         }
 
-        // Converts animal type string to to start with to start with Capital case.
+        // Converts animal type string to start with to start with Capital case.
         const kind = convertAnimalType(count, farm[index]);
 
         return `${stringifyCounter(count)} ${kind}`;
@@ -27,7 +27,7 @@ function printInfo() {
 
 function stringifyCounter(num) {
     if (isNaN(num) || num == null) {
-        num = '000'
+        num = '000';
     }
 
     let value = `${num}`;
@@ -48,4 +48,4 @@ function addAnimal(type) {
     return farm.push(type);
 }
 
-printInfo(9, 7,2);
+printInfo(9, 7, 2);
