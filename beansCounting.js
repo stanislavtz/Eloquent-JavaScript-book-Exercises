@@ -10,4 +10,4 @@ const countChars = (string, char, counter=0) => {
     return countChars(string.slice(index+1), char, counter);
 }
 
-console.log(countChars('knjkkgik', 'a'))
+console.log(countChars('test', 'a'))
