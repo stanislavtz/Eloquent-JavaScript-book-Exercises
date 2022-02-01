@@ -4,11 +4,12 @@ the numbers of cows and chickens on a farm,
 with the words Cows and Chickens after them and 
 zeros padded before both numbers so that they are always three digits long.
 
-* Followed below is shown a code who gave a possibilities to print quantities of animals in whole farm.
-* To add new animal to "farm".
+Followed below is shown a code who gave a possibilities to:
+* Print quantities of animals in whole farm.
+* Add new animal to "farm".
 */
 
-const farm = ['Cow', 'Chicken', 'Horse', 'Dog', 'Cat', 'beAr']
+const farm = ['Cow', 'Chicken', 'Horse', 'Dog', 'Cat', 'beAr'];
 
 function printInfo() {
     const result = [...arguments].map((count, index) => {
@@ -17,7 +18,7 @@ function printInfo() {
         }
 
         // Converts animal type string to start with to start with Capital case.
-        const kind = convertAnimalType(count, farm[index]);
+        const kind = transformAnimalKindString(count, farm[index]);
 
         return `${stringifyCounter(count)} ${kind}`;
     });
@@ -38,14 +39,14 @@ function stringifyCounter(num) {
     return value;
 }
 
-function convertAnimalType(x, type) {
-    type = type[0].toUpperCase() + type.substring(1).toLowerCase();
-    let kind = x > 1 || x == 0 ? `${type}s` : type;
+function transformAnimalKindString(x, animalKind) {
+    animalKind = animalKind[0].toUpperCase() + animalKind.substring(1).toLowerCase();
+    let kind = x > 1 || x == 0 ? `${animalKind}s` : animalKind;
     return kind;
 }
 
-function addAnimal(type) {
-    return farm.push(type);
+function addAnimal(kind) {
+    return farm.push(kind);
 }
 
 printInfo(9, 7, 2);

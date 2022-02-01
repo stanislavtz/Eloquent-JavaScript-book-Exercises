@@ -1,7 +1,8 @@
 let symbol= '';
+const lines = 5;
 
 function printClusters(n) {
-    if(n == 7) {
+    if(n == lines) {
         return console.log(symbol);
     }
     
