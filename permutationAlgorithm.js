@@ -1,4 +1,5 @@
 const used = new Set();
+
 const collection = ['a', 'b', 'c'];
 const permutations = new Array(collection.length);
 
