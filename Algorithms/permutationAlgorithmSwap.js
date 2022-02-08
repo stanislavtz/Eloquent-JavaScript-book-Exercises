@@ -9,7 +9,6 @@ function permute(indx) {
         swap(indx, i);
         permute(indx + 1);
         swap(indx, i);
-
     }
 }
 
