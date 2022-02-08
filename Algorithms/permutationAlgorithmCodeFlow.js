@@ -12,7 +12,9 @@ function permute(index) {
         if (!used.has(collection[i])) {
             used.add(collection[i]);
             permutations[index] = collection[i];
+
             permute(index + 1);
+            
             used.delete(collection[i]);
         }
     }
