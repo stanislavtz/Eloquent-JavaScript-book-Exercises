@@ -1,4 +1,4 @@
-function findSolution(target) {
+function findSolution(target, baseNumber) {
     function find(current, history) {
       if (current == target) {
         return history;
@@ -9,7 +9,7 @@ function findSolution(target) {
                find(current * 3, `(${history} * 3)`);
       }
     }
-    return find(1, "1");
+    return find(baseNumber, String(baseNumber));
   }
   
-  console.log(findSolution(15));
+  console.log(findSolution(21, 1));
