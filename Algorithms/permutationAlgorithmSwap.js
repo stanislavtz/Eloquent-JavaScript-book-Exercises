@@ -1,5 +1,3 @@
-const collection = ['a', 'b', 'c'];
-
 function permute(indx) {
     if (indx >= collection.length) {
         return console.log(collection.join(' '));
@@ -11,7 +9,6 @@ function permute(indx) {
         swap(indx, i);
         permute(indx + 1);
         swap(indx, i);
-
     }
 }
 
@@ -21,4 +18,5 @@ function swap(a, b) {
     collection[b] = temp;
 }
 
+const collection = ['a', 'b', 'c'];
 permute(0);
