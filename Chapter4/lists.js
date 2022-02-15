@@ -13,17 +13,54 @@ const arrayToList = (array) => {
         top = node;
     }
 
-    return top
+    return top;
 }
+
+const listToArray = (collection, result = []) => {
+    const queue = [collection.value];
+    
+    let next = collection.rest;
+
+    while(queue.length > 0) {
+        result.push(queue.shift());
+        next ? queue.push(next.value) : null;
+        next = next?.rest;
+    }
+
+    return result;
+}
+
+function prepend(value, data) {
+    return {
+        value,
+        rest: data
+    }
+}
+
+function nth(list, position, counter=0) {
+    if(!list) {
+        return undefined;
+    }
+
+    if(counter == position) {
+        return list.value;
+    }
+    
+    counter++;
+
+    return nth(list.rest, position, counter);
+}
+
 // Your code here.
 
 console.log(arrayToList([10, 20, 30]));
 // → {value: 10, rest: {value: 20, rest: null}}
 
-// console.log(listToArray(arrayToList([10, 20, 30])));
+console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]
 
-// console.log(prepend(10, prepend(20, null)));
+console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
 
-// console.log(nth(arrayToList([10, 20, 30]), 1));
+console.log(nth(arrayToList([10, 20, 30]), 2));
+// → 20
