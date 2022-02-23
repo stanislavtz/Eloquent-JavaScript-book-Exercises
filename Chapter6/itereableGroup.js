@@ -3,14 +3,18 @@ class Group {
         this.collection = [];
     }
 
+    get _collection() {
+        return this.collection;
+    }
+
     add(item) {
-        if(!this.has(item)) {
+        if (!this.has(item)) {
             this.collection.push(item);
         }
     }
 
     delete(item) {
-        if(this.has(item)) {
+        if (this.has(item)) {
             this.collection = this.collection.filter(x => x !== item)
         }
     }
@@ -21,23 +25,34 @@ class Group {
 
     static from(iter) {
         const gr = new Group();
-        iter.forEach(el => {
-            if(!gr.has(el)) {
-                gr.collection.push(el);
-            }
-        });
+        
+        iter.forEach(el => gr.add(el));
 
-        return gr;
+        return gr._collection;
     }
 }
 
 class GroupIterator {
     constructor(group) {
         this.group = group;
+        this.result = [];
     }
 
     next() {
-        // TO DO ...
-        return;
+        if (this.group.length === 0) {
+            return { value: undefined, done: true }
+        }
+
+        this.result.push({ value: this.group.shift(), done: false });
+
+        return this.result;
     }
+}
+
+Group.prototype[Symbol.iterator] = function () {
+    return new GroupIterator(this);
+}
+
+for (let value of Group.from(["a", "b", "c"])) {
+    console.log(value);
 }

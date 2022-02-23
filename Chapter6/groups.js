@@ -4,13 +4,13 @@ class Group {
     }
 
     add(item) {
-        if(!this.has(item)) {
+        if (!this.has(item)) {
             this.collection.push(item);
         }
     }
 
     delete(item) {
-        if(this.has(item)) {
+        if (this.has(item)) {
             this.collection = this.collection.filter(x => x !== item)
         }
     }
@@ -21,19 +21,12 @@ class Group {
 
     static from(iter) {
         const gr = new Group();
-        iter.forEach(el => {
-            if(!gr.has(el)) {
-                gr.collection.push(el);
-            }
-        });
+        
+        iter.forEach(el =>  gr.add(el));
 
         return gr;
     }
 }
-
-// const group1 = new Group();
-// group1.from([10, 20]);
-// console.log(group1.has(10));
 
 let group = Group.from([10, 20]);
 console.log(group.has(10));
@@ -43,4 +36,4 @@ console.log(group.has(30));
 group.add(10);
 group.delete(10);
 console.log(group.has(10));
-  // → false
+// → false
