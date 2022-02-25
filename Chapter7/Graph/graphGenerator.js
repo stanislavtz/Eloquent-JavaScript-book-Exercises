@@ -1,4 +1,4 @@
-const roads = require('./roads.js');
+const roads = require('../Roads/roads.js');
 
 function buildGraph(edges) {
     let graph = {};

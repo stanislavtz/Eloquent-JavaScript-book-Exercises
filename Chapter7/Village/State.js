@@ -1,4 +1,4 @@
-const roadsGraph = require('../graphGenerator.js');
+const roadsGraph = require('../Graph/graphGenerator.js');
 
 class State {
     constructor(location, parcels) {
@@ -19,14 +19,4 @@ class State {
     }
 }
 
-let first = new State(
-    "Post Office",
-    [{ location: "Post Office", address: "Alice's House" }]
-);
-
-let next = first.move("Alice's House");
-
-
-console.log(next.location);
-console.log(next.parcels);
-console.log(first.location);
+module.exports = State;
