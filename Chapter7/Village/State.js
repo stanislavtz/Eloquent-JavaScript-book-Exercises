@@ -1,4 +1,5 @@
-const roadsGraph = require('../Graph/graphGenerator.js');
+const roadsGraph = require('../Graph/build.js');
+const randomPick = require('../Utils/random-pick.js');
 
 class State {
     constructor(location, parcels) {
@@ -16,6 +17,24 @@ class State {
             .filter(p => p.location != p.address)
 
         return new State(direction, parcels);
+    }
+
+    static random(parcelsCount = 5) {
+        let parcels = [];
+
+        for (let i = 0; i < parcelsCount; i++) {
+            let address = randomPick(Object.keys(roadsGraph));
+    
+            let location;
+            
+            do {
+                location = randomPick(Object.keys(roadsGraph));
+            } while (location == address);
+    
+            parcels.push({ location, address });
+        }
+    
+        return new State("Post Office", parcels);
     }
 }
 

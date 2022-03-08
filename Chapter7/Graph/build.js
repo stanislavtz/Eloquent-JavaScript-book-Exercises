@@ -21,6 +21,4 @@ function buildGraph(edges) {
     return graph;
 }
 
-let roadsGraph = buildGraph(roads);
-
-module.exports = roadsGraph;
+module.exports = buildGraph(roads);
