@@ -6,6 +6,7 @@ const { bigOak, defineRequestType } = require('../crow-tech');
 //         console.log(info);
 //     });
 // });
+
 defineRequestType("note", (nest, content, source, done) => {
     console.log(`${nest.name} received note: ${content}`);
     done();
@@ -24,6 +25,5 @@ function storage(nest, name) {
 }
 
 storage(bigOak, "food caches")
-    .then(value => value[0])
-    .then(res => storage(bigOak, res))
+    .then(res => storage(bigOak, res[0]))
     .then(r => console.log(r))
