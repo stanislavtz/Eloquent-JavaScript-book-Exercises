@@ -9,14 +9,14 @@ const MOUNTAINS = [
 ];
 
 function createHtmlElement(name, children) {
-    if (children.length < 1) {
+    if (children?.length < 1) {
         return document.createElement(name);
     }
 
     const element = document.createElement(name);
-    children.forEach(el => {
-        // const tagName = document.createElement(el.name);
-        element.appendChild(el.name);
+    children?.forEach(el => {
+        const tagName = document.createElement(el.name);
+        element.appendChild(tagName);
         return createHtmlElement(el.name, el.children);
     });
 }
