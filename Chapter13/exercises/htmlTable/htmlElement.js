@@ -23,34 +23,15 @@ const MOUNTAINS = [
 
 const mountainsDivEl = document.querySelector('#mountains');
 mountainsDivEl.textContent = '';
-// body.appendChild(createHtmlElement('table', [
-//     {name: 'th', children: [
-//         {name: 'td'},
-//         {name: 'td'},
-//         {name: 'td'},
-//     ]}
-// ]));
 
-let i = 0;
 const table = document.createElement('table');
 const tr = document.createElement('tr');
 
-while (i < 3) {
+Object.keys(MOUNTAINS[0]).forEach(header => {
     const th = document.createElement('th');
-    switch (i) {
-        case 0:
-            th.textContent = 'name';
-            break;
-        case 1:
-            th.textContent = 'height';
-            break;
-        case 2:
-            th.textContent = 'place';
-            break;
-    }
+    th.textContent = header;
     tr.appendChild(th);
-    i++;
-}
+});
 
 table.appendChild(tr);
 
