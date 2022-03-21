@@ -8,20 +8,20 @@ const MOUNTAINS = [
     { name: "Mont Blanc", height: 4808, place: "Italy/France" }
 ];
 
-function createHtmlElement(name, children) {
-    if (children?.length < 1) {
-        return document.createElement(name);
-    }
+// function createHtmlElement(name, children) {
+//     if (children?.length < 1) {
+//         return document.createElement(name);
+//     }
 
-    const element = document.createElement(name);
-    children?.forEach(el => {
-        const tagName = document.createElement(el.name);
-        element.appendChild(tagName);
-        return createHtmlElement(el.name, el.children);
-    });
-}
+//     const element = document.createElement(name);
+//     children?.forEach(el => {
+//         const tagName = document.createElement(el.name);
+//         element.appendChild(tagName);
+//         return createHtmlElement(el.name, el.children);
+//     });
+// }
 
-const body = document.querySelector('body');
+const mountainsDivEl = document.querySelector('#mountains');
 // body.appendChild(createHtmlElement('table', [
 //     {name: 'th', children: [
 //         {name: 'td'},
@@ -30,9 +30,11 @@ const body = document.querySelector('body');
 //     ]}
 // ]));
 
-
+let i = 0;
 const table = document.createElement('table');
-for (let i = 0; 1 < 3; i++) {
+const tr = document.createElement('tr');
+
+while (i < 3) {
     const th = document.createElement('th');
     switch (i) {
         case 0:
@@ -45,5 +47,23 @@ for (let i = 0; 1 < 3; i++) {
             th.textContent = 'place';
             break;
     }
-    
+    tr.appendChild(th);
+    i++;
 }
+
+table.appendChild(tr);
+
+const tableBody = MOUNTAINS.map(mountain => {
+    const tr = document.createElement('tr');
+
+    Object.values(mountain).forEach((value) => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        tr.appendChild(td);
+    });
+    return tr;
+});
+
+table.append(...tableBody);
+
+mountainsDivEl.appendChild(table);
