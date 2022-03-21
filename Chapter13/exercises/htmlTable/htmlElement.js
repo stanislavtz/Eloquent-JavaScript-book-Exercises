@@ -22,6 +22,7 @@ const MOUNTAINS = [
 // }
 
 const mountainsDivEl = document.querySelector('#mountains');
+mountainsDivEl.textContent = '';
 // body.appendChild(createHtmlElement('table', [
 //     {name: 'th', children: [
 //         {name: 'td'},
