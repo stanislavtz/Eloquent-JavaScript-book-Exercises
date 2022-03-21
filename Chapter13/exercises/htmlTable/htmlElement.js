@@ -22,10 +22,28 @@ function createHtmlElement(name, children) {
 }
 
 const body = document.querySelector('body');
-body.appendChild(createHtmlElement('table', [
-    {name: 'th', children: [
-        {name: 'td'},
-        {name: 'td'},
-        {name: 'td'},
-    ]}
-]));
+// body.appendChild(createHtmlElement('table', [
+//     {name: 'th', children: [
+//         {name: 'td'},
+//         {name: 'td'},
+//         {name: 'td'},
+//     ]}
+// ]));
+
+
+const table = document.createElement('table');
+for (let i = 0; 1 < 3; i++) {
+    const th = document.createElement('th');
+    switch (i) {
+        case 0:
+            th.textContent = 'name';
+            break;
+        case 1:
+            th.textContent = 'height';
+            break;
+        case 2:
+            th.textContent = 'place';
+            break;
+    }
+    
+}
