@@ -27,37 +27,25 @@ function createHtmlElement(node, textContent, children) {
 const mountainsDivEl = document.querySelector('#mountains');
 mountainsDivEl.textContent = '';
 
-const tableHeader = Object.keys(MOUNTAINS[0]).map(x => Object.create({ node: 'th', textContent: x, children: '' }));
-console.log(tableHeader);
+const columnNames = Object.keys(MOUNTAINS[0]).map(x => Object.create({ node: 'th', textContent: x }));
+
+const tableHeader =  {
+    node: 'tr',
+    textContent: '',
+    children: columnNames
+}
 
 const tableBody = MOUNTAINS.map(mountain => {
-    const collection = Object.values(mountain).map(obj => {
-        const newObj = {
-            node: 'td', 
-            textContent: obj, 
-            children: ''
-        }
-
-        return newObj;
-    });
-
-    return collection;
+    return {
+        node: 'tr',
+        textContent: '',
+        children: Object.values(mountain).map(m => Object.create({ node: 'td', textContent: m }))
+    }
 });
 
-console.log(tableBody);
+const tableData = [tableHeader, ...tableBody];
 
-const table = createHtmlElement('table', '', [
-    {
-        node: 'tr',
-        textContent: '',
-        children: tableHeader
-    },
-    {
-        node: 'tr',
-        textContent: '',
-        children: tableBody
-    }
-])
+const table = createHtmlElement('table', '', tableData);
 
 // const table = document.createElement('table');
 // const tr = document.createElement('tr');
@@ -83,5 +71,4 @@ const table = createHtmlElement('table', '', [
 
 // table.append(...tableBody);
 
-console.log(table)
 mountainsDivEl.appendChild(table);
