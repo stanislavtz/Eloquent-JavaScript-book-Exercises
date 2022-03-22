@@ -8,44 +8,80 @@ const MOUNTAINS = [
     { name: "Mont Blanc", height: 4808, place: "Italy/France" }
 ];
 
-// function createHtmlElement(name, children) {
-//     if (children?.length < 1) {
-//         return document.createElement(name);
-//     }
+function createHtmlElement(node, textContent, children) {
+    const element = document.createElement(node);
+    element.textContent = textContent || '';
 
-//     const element = document.createElement(name);
-//     children?.forEach(el => {
-//         const tagName = document.createElement(el.name);
-//         element.appendChild(tagName);
-//         return createHtmlElement(el.name, el.children);
-//     });
-// }
+    if (!children || children.length < 1) {
+        return element;
+    }
+
+    for (const child of children) {
+        const el = createHtmlElement(child.node, child.textContent, child.children);
+        element.appendChild(el);
+    }
+
+    return element;
+}
 
 const mountainsDivEl = document.querySelector('#mountains');
 mountainsDivEl.textContent = '';
 
-const table = document.createElement('table');
-const tr = document.createElement('tr');
-
-Object.keys(MOUNTAINS[0]).forEach(header => {
-    const th = document.createElement('th');
-    th.textContent = header;
-    tr.appendChild(th);
-});
-
-table.appendChild(tr);
+const tableHeader = Object.keys(MOUNTAINS[0]).map(x => Object.create({ node: 'th', textContent: x, children: '' }));
+console.log(tableHeader);
 
 const tableBody = MOUNTAINS.map(mountain => {
-    const tr = document.createElement('tr');
+    const collection = Object.values(mountain).map(obj => {
+        const newObj = {
+            node: 'td', 
+            textContent: obj, 
+            children: ''
+        }
 
-    Object.values(mountain).forEach((value) => {
-        const td = document.createElement('td');
-        td.textContent = value;
-        tr.appendChild(td);
+        return newObj;
     });
-    return tr;
+
+    return collection;
 });
 
-table.append(...tableBody);
+console.log(tableBody);
 
+const table = createHtmlElement('table', '', [
+    {
+        node: 'tr',
+        textContent: '',
+        children: tableHeader
+    },
+    {
+        node: 'tr',
+        textContent: '',
+        children: tableBody
+    }
+])
+
+// const table = document.createElement('table');
+// const tr = document.createElement('tr');
+
+// Object.keys(MOUNTAINS[0]).forEach(header => {
+//     const th = document.createElement('th');
+//     th.textContent = header;
+//     tr.appendChild(th);
+// });
+
+// table.appendChild(tr);
+
+// const tableBody = MOUNTAINS.map(mountain => {
+//     const tr = document.createElement('tr');
+
+//     Object.values(mountain).forEach((value) => {
+//         const td = document.createElement('td');
+//         td.textContent = value;
+//         tr.appendChild(td);
+//     });
+//     return tr;
+// });
+
+// table.append(...tableBody);
+
+console.log(table)
 mountainsDivEl.appendChild(table);
