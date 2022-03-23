@@ -1,28 +1,5 @@
-const MOUNTAINS = [
-    { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
-    { name: "Everest", height: 8848, place: "Nepal" },
-    { name: "Mount Fuji", height: 3776, place: "Japan" },
-    { name: "Vaalserberg", height: 323, place: "Netherlands" },
-    { name: "Denali", height: 6168, place: "United States" },
-    { name: "Popocatepetl", height: 5465, place: "Mexico" },
-    { name: "Mont Blanc", height: 4808, place: "Italy/France" }
-];
-
-function createHtmlElement(node, textContent, children) {
-    const element = document.createElement(node);
-    element.textContent = textContent || '';
-
-    if (!children || children.length < 1) {
-        return element;
-    }
-
-    for (const child of children) {
-        const el = createHtmlElement(child.node, child.textContent, child.children);
-        element.appendChild(el);
-    }
-
-    return element;
-}
+import MOUNTAINS from './mountains.js'
+import createHTMLElement from './createHTMLelement.js';
 
 const mountainsDivEl = document.querySelector('#mountains');
 mountainsDivEl.textContent = '';
@@ -45,7 +22,7 @@ const tableBody = MOUNTAINS.map(mountain => {
 
 const tableData = [tableHeader, ...tableBody];
 
-const table = createHtmlElement('table', '', tableData);
+const table = createHTMLElement('table', '', tableData);
 
 // const table = document.createElement('table');
 // const tr = document.createElement('tr');
