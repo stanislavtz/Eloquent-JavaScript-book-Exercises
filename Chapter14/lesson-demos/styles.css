@@ -6,3 +6,5 @@
 p {
     color: blue;
 }
+
+body { min-height: 200px }

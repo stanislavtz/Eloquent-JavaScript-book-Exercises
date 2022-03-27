@@ -26,24 +26,39 @@ function findText(node, string) {
 }
 
 function movePirate() {
-    let pirate = document.querySelector('p img');
-    let angle = Math.PI;
-
-    function animate(time, lastTime) {
+    let pirate = document.querySelector('#pirate');
+    let fly = document.querySelector('#fly');
+    
+    let angle = 0;
+    let lastTime = null;
+    
+    function animate(time) {
         if (lastTime != null) {
             angle += (time - lastTime) * 0.001;
         }
-        pirate.style.top = (Math.sin(angle) * 100) + "px";
-        pirate.style.left = (Math.cos(angle) * 200) + "px";
-        requestAnimationFrame(newTime => animate(newTime, time));
+
+        lastTime = time;
+        const pirateX = Math.sin(angle) * 40 + 40;
+        const pirateY = Math.cos(angle) * 200;
+
+        const flyX = Math.sin(-angle*2) * 70 - 200;
+        const flyY = Math.cos(-angle*2) * 200 - 200;
+
+        pirate.style.top = `${pirateX}px`;
+        pirate.style.left = `${pirateY}px`;
+        
+        fly.style.top = `${flyX}px`;
+        fly.style.left = `${flyY}px`;
+
+        requestAnimationFrame(newTime => animate(newTime));
     }
     
-    requestAnimationFrame(newTime => animate(newTime, 0));
+    requestAnimationFrame(newTime => animate(newTime));
 }
 
-addHeading(text);
+// addHeading(text);
 
-const bodyEl = document.querySelector('body');
-console.log(findText(bodyEl, 'book'));
+// const bodyEl = document.querySelector('body');
+// console.log(findText(bodyEl, 'book'));
 
 movePirate()
