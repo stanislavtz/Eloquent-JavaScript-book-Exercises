@@ -1,0 +1,16 @@
+.balloon {
+    text-align: center;
+    margin: 100px, 0, 0, 0;
+    font-size: 16px;
+    position:static
+}
+
+.boom-note {
+    color: red;
+    font-size: 85px;
+    font-family: cursive;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
+    text-shadow: rgb(134, 112, 38) 0 0 25px;
+}
