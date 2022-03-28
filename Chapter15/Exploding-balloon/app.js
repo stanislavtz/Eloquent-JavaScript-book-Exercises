@@ -7,25 +7,22 @@ function inflate() {
     document.body.appendChild(boomNote);
 
     let size = 16;
-    let isExploded = false;
 
-    window.addEventListener('keydown', arrowKeysEventListener);
+    window.addEventListener('keydown', arrowKeysListener);
+    window.addEventListener('mousedown', clickListener);
     
-    function arrowKeysEventListener(e) {
+    function arrowKeysListener(e) {
+        e.key == 'ArrowUp' || e.key == 'ArrowDown' 
+            ? e.preventDefault()
+            : e;
+
         if (e.key == 'ArrowUp') {
-            e.preventDefault();
             if (size >= explodingSize) {
-                isExploded = true;
-                balloon.textContent = explosion;
-                balloon.style['margin-bottom'] = '5px';
-                boomNote.style.display = 'block';
-                window.removeEventListener('keydown', arrowKeysEventListener);
+                blockListersAction();
             }
 
             size *= 1.1;
         } else if (e.key == 'ArrowDown') {
-            e.preventDefault();
-            if (isExploded) return;
             if (size <= 15) {
                 return size = 16;
             }
@@ -33,6 +30,30 @@ function inflate() {
         }
 
         return balloon.style.fontSize = `${size}px`;
+    }
+
+    function clickListener(e) {
+        if(e.button == 0) {
+            if(size >= explodingSize){
+                blockListersAction();
+            }
+            size *= 1.1;
+        } else if (e.button == 2) {
+            if (size <= 15) {
+                return size = 16;
+            }
+            size /= 1.1;
+        }
+
+        return balloon.style.fontSize = `${size}px`;
+    }
+
+    function blockListersAction() {
+        boomNote.style.display = 'block';
+        balloon.style['margin-bottom'] = '5px';
+        balloon.textContent = explosion;
+        window.removeEventListener('keydown', arrowKeysListener);
+        window.removeEventListener('mousedown', clickListener);
     }
 }
 
