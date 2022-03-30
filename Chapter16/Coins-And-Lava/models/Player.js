@@ -15,3 +15,7 @@ class Player {
         return new Player(position, speed);
       }
 }
+
+Player.prototype.size = new Vec(0.8, 1.5);
+
+export default Player;
