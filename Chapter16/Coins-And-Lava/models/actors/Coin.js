@@ -9,7 +9,8 @@ class Coin extends Actor {
 
     static create(pos) {
         let basePos = pos.plus(new Vec(0.2, 0.1));
-        return new Coin(basePos, basePos, Math.random() * Math.PI * 2);
+        let wobble = Math.random() * Math.PI * 2;
+        return new Coin(basePos, basePos, wobble);
     }
 }
 
