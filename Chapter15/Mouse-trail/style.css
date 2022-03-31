@@ -1,10 +1,17 @@
 .trail { /* className for the trail elements */
     position: absolute;
-    height: 6px; width: 6px;
+    height: 16px; width: 16px;
     border-radius: 3px;
     background: teal;
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    text-align: center;
   }
   
   body {
     height: 300px;
+  }
+  
+  .inner-content {
   }
