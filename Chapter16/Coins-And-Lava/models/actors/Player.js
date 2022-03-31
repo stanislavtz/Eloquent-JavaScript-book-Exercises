@@ -1,13 +1,10 @@
-import Vec from "./Vector";
+import Vec from "../Vector.js";
+import Actor from "./Actor.js";
 
-class Player {
+class Player extends Actor{
     constructor(pos, speed) {
-        this.pos = pos;
-        this.speed = speed;
+        super(pos, speed);
     }
-
-    // type = () => 'player';
-    get type() {return 'player'}
 
     static create(pos) {
         let position = pos.plus(new Vec(0, -0.5));
