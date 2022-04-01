@@ -1,4 +1,4 @@
-import levelChars from "../utils/levelChars.js";
+import levelChars from "../utils/levelUtils/levelChars.js";
 import Vec from "./Vector.js";
 
 class Level {
