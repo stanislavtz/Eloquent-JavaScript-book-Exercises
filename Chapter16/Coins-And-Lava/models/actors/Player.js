@@ -1,5 +1,5 @@
-import Vec from "../Vector.js";
 import Actor from "./Actor.js";
+import Vec from "../Vector.js";
 
 class Player extends Actor{
     constructor(pos, speed) {

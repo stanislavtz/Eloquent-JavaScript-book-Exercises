@@ -1,4 +1,5 @@
 import Actor from "./Actor.js";
+import Vec from "../Vector.js";
 
 class Coin extends Actor {
     constructor(pos, basePos, wobble) {
