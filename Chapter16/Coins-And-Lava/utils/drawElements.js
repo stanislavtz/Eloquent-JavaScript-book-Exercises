@@ -1,24 +1,34 @@
 import domEleCreator from "./domElement.js";
 
-export const scale = 20;
+import {scale, tableAttrs, rowAttrs} from '../constants/drawConstants.js';
 
-export function drawGrid(level) {
-  return domEleCreator("table", {
-    class: "background",
-    style: `width: ${level.width * scale}px`
-  }, ...level.rows.map(row =>
-    domEleCreator("tr", {style: `height: ${scale}px`},
-        ...row.map(type => domEleCreator("td", {class: type})))
-  ));
+export const drawGrid = (level) => domEleCreator("table", tableAttrs(level), ...drawTable(level));
+
+export const drawActors = (actors)  => {
+    return domEleCreator("div", {}, ...actors.map(drawActor));
 }
 
-export function drawActors(actors) {
-  return domEleCreator("div", {}, ...actors.map(actor => {
-    let rect = domEleCreator("div", {class: `actor ${actor.type}`});
-    rect.style.width = `${actor.size.x * scale}px`;
-    rect.style.height = `${actor.size.y * scale}px`;
-    rect.style.left = `${actor.pos.x * scale}px`;
-    rect.style.top = `${actor.pos.y * scale}px`;
-    return rect;
-  }));
+function drawTable(lv) {
+    return lv.rows.map(drawTableRow);
+}
+
+function drawTableRow(row) {
+    return domEleCreator("tr", rowAttrs, ...drawTableData(row));
+}
+
+function drawTableData(r) {
+    return r.map(type => domEleCreator('td', {class: type}));
+}
+
+function drawActor(actor) {
+    let ele = domEleCreator('div', {class: `actor ${actor.type}`});
+    return defineSize(ele, actor);
+}
+
+function defineSize(element, figure) {
+    element.style.width = `${figure.size.x * scale}px`;
+    element.style.height = `${figure.size.y * scale}px`;
+    element.style.left = `${figure.pos.x * scale}px`;
+    element.style.top = `${figure.pos.y * scale}px`;
+    return element;
 }
