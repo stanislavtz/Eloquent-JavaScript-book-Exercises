@@ -1,5 +1,7 @@
 import domEleCreator from "../utils/domElement.js";
-import { drawGrid, drawActors, scale } from "../utils/drawElements.js";
+
+import { scale } from '../constants/drawConstants.js'
+import { drawGrid, drawActors } from "../utils/drawElements.js";
 
 class DOMDisplay {
     constructor(parent, level) {
