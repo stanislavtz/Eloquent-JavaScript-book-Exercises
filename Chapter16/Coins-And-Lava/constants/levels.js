@@ -1,4 +1,6 @@
-export default [`                                                    
+import domEleCreator from "../utils/domElement.js";
+
+export const GAME_LEVELS = [`                                                    
 ................................................................................
 ................................................................................
 ................................................................................
@@ -171,6 +173,15 @@ export default [`
 ..................................................############################################################
 ..............................................................................................................
 `];
+
+export const GAME_OVER = () => {
+    const heading = document.createElement('h1');
+    heading.style.color = 'blue';
+    heading.style.textAlign = 'center';
+    heading.textContent = 'GAME OVER';
+    document.body.appendChild(heading)
+}
+
 
 // if (typeof module != "undefined" && module.exports && (typeof window == "undefined" || window.exports != exports))
 //   module.exports = GAME_LEVELS;
