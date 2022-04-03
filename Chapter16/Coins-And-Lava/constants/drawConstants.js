@@ -1,12 +1,12 @@
-export const scale = 20;
+export const SCALE = 20;
 
-export const rowAttrs = {
-    style: `height: ${scale}px`
+export const ROW_ATTRS = {
+    style: `height: ${SCALE}px`
 }
 
-export const tableAttrs = (level) => {
+export const TABLE_ATTRS = (level) => {
     return {
         class: "background",
-        style: `width: ${level.width * scale}px`
+        style: `width: ${level.width * SCALE}px`
     }
 }

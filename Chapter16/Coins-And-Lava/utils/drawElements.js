@@ -1,8 +1,8 @@
 import domEleCreator from "./domElement.js";
 
-import {scale, tableAttrs, rowAttrs} from '../constants/drawConstants.js';
+import {SCALE, TABLE_ATTRS, ROW_ATTRS} from '../constants/drawConstants.js';
 
-export const drawGrid = (level) => domEleCreator("table", tableAttrs(level), ...drawTable(level));
+export const drawGrid = (level) => domEleCreator("table", TABLE_ATTRS(level), ...drawTable(level));
 
 export const drawActors = (actors)  => {
     return domEleCreator("div", {}, ...actors.map(drawActor));
@@ -13,7 +13,7 @@ function drawTable(lv) {
 }
 
 function drawTableRow(row) {
-    return domEleCreator("tr", rowAttrs, ...drawTableData(row));
+    return domEleCreator("tr", ROW_ATTRS, ...drawTableData(row));
 }
 
 function drawTableData(r) {
@@ -26,9 +26,9 @@ function drawActor(actor) {
 }
 
 function defineSize(element, figure) {
-    element.style.width = `${figure.size.x * scale}px`;
-    element.style.height = `${figure.size.y * scale}px`;
-    element.style.left = `${figure.pos.x * scale}px`;
-    element.style.top = `${figure.pos.y * scale}px`;
+    element.style.width = `${figure.size.x * SCALE}px`;
+    element.style.height = `${figure.size.y * SCALE}px`;
+    element.style.left = `${figure.pos.x * SCALE}px`;
+    element.style.top = `${figure.pos.y * SCALE}px`;
     return element;
 }

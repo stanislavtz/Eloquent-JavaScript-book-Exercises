@@ -1,6 +1,6 @@
 import domEleCreator from "../utils/domElement.js";
 
-import { scale } from '../constants/drawConstants.js'
+import { SCALE } from '../constants/drawConstants.js'
 import { drawGrid, drawActors } from "../utils/drawElements.js";
 
 class DOMDisplay {
@@ -35,7 +35,7 @@ DOMDisplay.prototype.scrollPlayerIntoView = function (state) {
     let player = state.player;
     let center = player.pos
         .plus(player.size.times(0.5))
-        .times(scale);
+        .times(SCALE);
 
     if (center.x < left + margin) {
         this.dom.scrollLeft = center.x - margin;
