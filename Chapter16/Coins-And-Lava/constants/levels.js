@@ -1,5 +1,3 @@
-import domEleCreator from "../utils/domElement.js";
-
 export const GAME_LEVELS = [`                                                    
 ................................................................................
 ................................................................................
@@ -181,9 +179,3 @@ export const GAME_OVER = () => {
     heading.textContent = 'GAME OVER';
     document.body.appendChild(heading)
 }
-
-
-// if (typeof module != "undefined" && module.exports && (typeof window == "undefined" || window.exports != exports))
-//   module.exports = GAME_LEVELS;
-// if (typeof global != "undefined" && !global.GAME_LEVELS)
-//   global.GAME_LEVELS = GAME_LEVELS;
