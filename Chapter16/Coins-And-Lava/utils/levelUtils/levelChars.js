@@ -10,7 +10,8 @@ const levelChars = {
     "o": Coin,
     "=": Lava,
     "|": Lava,
-    "v": Lava
+    "v": Lava,
+    "m": 'Monster' // TO DO ....
 };
 
 export default levelChars;
