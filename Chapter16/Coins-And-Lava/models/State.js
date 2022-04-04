@@ -1,4 +1,4 @@
-import overlap from '../utils/overlapActors.js';
+import overlap from '../utils/helpers/overlapActors.js';
 
 class State {
     constructor(level, actors, status) {
