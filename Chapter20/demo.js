@@ -30,4 +30,4 @@ const server = createServer((req, res) => {
 // });
 // requestStream.end();
 
-server.listen(port, () => console.log(`URL: http://localhost:${port} \nServer is running on port ${port}...`));
+server.listen(port, () => console.log(`URL: http://localhost:${port}/demo \nServer is running on port ${port}...`));
