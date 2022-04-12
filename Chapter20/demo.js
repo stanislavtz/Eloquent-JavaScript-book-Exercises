@@ -1,31 +1,33 @@
 const { createServer } = require('http');
+const { readFile, writeFile, rm } = require('fs').promises;
 
 const port = 8080;
 const greeting = 'Hello world!';
-const pTag = 'I am a paragraph tag';
-const hrefURL = `https://google.bg`;
+const pTagContent = 'I am a paragraph tag';
 
-const body = (`
-        <h1>${greeting}</h1>
-        <p>${pTag}</p>
-        <a href=${hrefURL}>click me</a>
-    `);
-
-const server1 = createServer((req, res) => {
-    res.writeHead(200, {'content-type' : 'text/html'});
-    res.write(body, 'utf-8');
+const server = createServer((req, res) => {
+    const body = `
+    <h1>
+        ${greeting}
+    </h1>
+    <p>${pTagContent}</p>
+    <a href=${req.url} _blank=true>${req.url}</a>
+`;
+    res.writeHead(200, { 'content-type': 'text/html' });
+    res.write(body);
     res.end();
 });
 
-let server = createServer((request, response) => {
-    response.writeHead(200, { "Content-Type": "text/html" });
-    // console.log(request)
-    response.write(`
-    <h1>Hello!</h1>
-    <p>You asked for <code>${request.method}</code></p>`);
-    response.end();
-});
-server.listen(8000);
-console.log("Listening! (port 8000)");
+// const { request } = require("http");
+// let requestStream = request({
+//     protocol: "http:",
+//     hostname: "eloquentjavascript.net",
+//     path: "/blablabla",
+//     method: "GET",
+//     headers: { Accept: "text/html" }
+// }, response => {
+//     console.log("Server responded with status code", response.statusCode);
+// });
+// requestStream.end();
 
-server1.listen(port, () => console.log(`Server is running on port ${port}...`));
+server.listen(port, () => console.log(`URL: http://localhost:${port} \nServer is running on port ${port}...`));
