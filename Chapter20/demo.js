@@ -1,6 +1,7 @@
 const { createServer } = require("http");
 
-const methods = Object.create(null);
+const methods = {};
+// const methods = Object.create(null);
 
 const app = createServer((request, response) => {
     let handler = methods[request.method] || notAllowed;
